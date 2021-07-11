@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>初识Vue</title>
-    <script type="text/javascript" src="./js/vue.js"></script>
+    <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
     <!-- 
@@ -18,7 +18,7 @@
         <h1>学校位于：{{ school.address }}</h1>
         <h1>我的学的是：{{ school.subject() }}专业</h1>
         <hr/>
-        <h1>{{ school.name, school.address }}</h1> <!-- toUpperCase()转成大写 -->
+        <h1>{{ school.name, school.address }}</h1> <!-- 最终展示name -->
         <h1>{{ school.name && school.address }}</h1>
         <h1>{{ school.name ? 1:2 }}</h1>
     </div>

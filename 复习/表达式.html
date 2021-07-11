@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 关于逗号说明
+        var a = 1
+        var b = 2
+        var c = 3
+        var d = 4
+
+        var z = a, b, c, d // 不加括号z取第一个值，加括号z取最后一个值
+        var z = (a, b, c, d)
+
+        console.log(c);
+        console.log(b);
+
+        // 关于逻辑“与”
+        const a = 'qwe'
+        const b = 'xyz'
+
+        const x = a && b
+
+        console.log(x);
+
+        if (a && b) { // 
+            console.log('@');
+        }
+    </script>
+</body>
+</html>
