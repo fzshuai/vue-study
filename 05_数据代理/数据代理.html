@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        Vue中的数据代理：
+            1.数据代理的概念
+                （1）配置对象data中的数据，会被收集到_data中，然后通过Object.defineProperty让vm上拥有data中所有的属性
+                （2）当修改vm的msg时，返回的是_data中同名属性的值
+                （3）当修改vm的msg时，修改的是_data中同名属性的值  
+            2.用数据代理的目的
+                （1）为了更加方便的读取和修改_data中的数据，不做数据代理，就要：vm._data.xxx访问数据
+                （2）更加高效的监视数据（直接收集到vm上会导致效率低下）
+    -->
+    <div id="root">
+        <h2>{{msg}}</h2>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#root',
+            data: { // 传入的data，收集在vm._data,再通过数据代理给vm.xxx
+                msg: '没有什么是不可战胜的！'
+            }
+        })
+        // console.log(vm);
+        const {_data: {msg}} = vm
+        console.log(msg)
+        console.log(vm);
+    </script>
+</body>
+</html>

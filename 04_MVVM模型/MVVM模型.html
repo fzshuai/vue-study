@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,41 +8,31 @@
     <title>MVVM模型</title>
     <script src="../js/vue.js"></script>
 </head>
+
 <body>
+    <!-- 
+        MVVM的理解：
+            1. M：模型（Model）：对应data中的数据
+            2. V：视图（View）：模板代码
+            3. VM：视图模型（ViewModel）：VUe实例对象
+     -->
     <div id="root">
         <h1>{{msg}}</h1>
     </div>
 
     <script>
-        // el第一种写法（常用）
         new Vue({
             el: '#root',
             data: {
                 msg: '加油！'
             }
         })
-
-        // el第二种写法
-        const vm = new Vue({
-            data: {
-                msg: '加油'
-            }
-        })
-
-        // $后面的方法是 Vue 内部已经定义好的
-        vm.$mount('#root')
-
-        // data的第二种写法，data 是一个函数，返回数据对象
-        // new Vue({
-        //     el: '#root',
-        //     data: function() { // data不要写成箭头函数，否则this指向是window，而不是vue实例
-        //         console.log(this);
-        //         return {
-        //             msg: '东软',
-        //             address: '东大软件园A园'
-        //         }
-        //     }
-        // })
+        // 观察发现：通过vm能看到data中的属性
+        setTimeout(() => {
+            console.log(vm.msg) // 通过vm可以读取data中的数据
+            vm.msg = 'neusoft' // 通过vm可以修改data中的数据
+        }, 1000)
     </script>
 </body>
+
 </html>

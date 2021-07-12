@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM模型</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>{{msg}}</h1>
+    </div>
+
+    <script>
+        // el第一种写法（常用）
+        new Vue({
+            el: '#root',
+            data: {
+                msg: '加油！'
+            }
+        })
+
+        // el第二种写法
+        const vm = new Vue({
+            data: {
+                msg: '加油'
+            }
+        })
+
+        // $后面的方法是 Vue 内部已经定义好的
+        vm.$mount('#root')
+
+        // data的第二种写法，data 是一个函数，返回数据对象
+        // new Vue({
+        //     el: '#root',
+        //     data: function() { // data不要写成箭头函数，否则this指向是window，而不是vue实例
+        //         console.log(this);
+        //         return {
+        //             msg: '东软',
+        //             address: '东大软件园A园'
+        //         }
+        //     }
+        // })
+    </script>
+</body>
+</html>
