@@ -14,5 +14,7 @@
 </script>
 
 <style>
-
+  .welcome {
+    background-color: bisque;
+  }
 </style>

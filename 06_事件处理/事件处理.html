@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>坚持学习 {{msg}}} </h2>
+
+        <button v-on:click="show1()">点我打印信息1</button>
+    </div>
+     
+    <script>
+        new Vue({
+            el: '#root',
+            data: { // 用于配置数据
+                msg: 'Vue'
+            },
+            methods: { // 用于配置方法
+                show1() {
+                    console.log('我是信息1', this);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
