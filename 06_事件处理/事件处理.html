@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,31 @@
     <title>事件处理</title>
     <script src="../js/vue.js"></script>
 </head>
-<body>
-    <div id="root">
-        <h2>坚持学习 {{msg}}} </h2>
 
-        <button v-on:click="show1()">点我打印信息1</button>
+<body>
+    <!-- 
+
+     -->
+
+    <div id="root">
+        <h2>坚持学习 {{msg}} </h2>
+        <!-- 事件绑定标准方式 -->
+        <button v-on:click="show1()">点我打印信息1（v-on绑定）</button><br><br>
+        <!-- 事件绑定简写方式v-on==>@ -->
+        <button @click="show1">点我打印信息1（@绑定）</button><br><br>
+        <!-- 事件绑定传递参数 -->
+        <button @click="show2(666, $event)">点我打印信息2 + 传递参数</button><br><br>
+        <!-- 绑定事件阻止默认行为,prevent叫事件修饰符 -->
+        <a href="https://www.baidu.com" @click.prevent="show3">点我提示信息3（阻止默认行为）</a><br><br>
+        <!-- 绑定事件阻止冒泡，事件修饰符可以连写 -->
+        <div @click="show4">
+            <a @click.stop.prevent="show4">点我提示信息4（阻止冒泡）</a>
+        </div><br>
+        <!-- 键盘事件 -->
+        <!-- <input @keyup.enter="show5" type="text" placeholder="按下回车提示数据"> -->
+        <input @keyup.13="show5" type="text" placeholder="按下回车提示数据">
     </div>
-     
+
     <script>
         new Vue({
             el: '#root',
@@ -21,12 +40,34 @@
                 msg: 'Vue'
             },
             methods: { // 用于配置方法
-                show1() {
+                show1(event) { // 不要写成箭头函数，否则this就变成Window了
+                    console.log(this); // this指的是vue的实例
                     console.log('我是信息1', this);
+                    console.log(event, event.target.innerText);
+                },
+                show2(number, event) {
+                    alert(number)
+                    console.log(event)
+                },
+                show3(event) {
+                    // event.preventDefault()
+                    alert('信息3')
+                },
+                show4(event) {
+                    // event.stopPropagation(); //靠程序员手动阻止
+                    alert('信息4')
+                },
+                show5(event) {
+                    // if (event.keyCode != 13) {
+                    //     return
+                    // }
+                    console.log(event.target.value);
+                    console.log(event.keyCode); // 键盘按键编码
+                    console.log(event.key); // 键盘名称
                 }
             }
         })
-
     </script>
 </body>
+
 </html>
