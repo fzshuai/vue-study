@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="root">
-        姓：<input type="text" v-model="firstName">
+        姓：<input type="text" v-model="firstName"><br><br>
         名：<input type="text" v-model="lastName"><br><br>
         全名：<span>{{ fullName }}</span>
     </div>
@@ -22,12 +22,21 @@
                 lastName: '三'
             },
             computed: {
-                fullName: {
-                    get() { // 当有人读取fullName时，get就会被调用，且返回值就作为fullName的值
-                        console.log('get被调用了')
-                        // 此处的this是vm
-                        return this.firstName + '-' + this.lastName
-                    }
+                // 完整写法
+                // fullName: {
+                //     get() { 
+                //         console.log('get被调用了')
+                //         return this.firstName + '-' + this.lastName
+                //     },
+                //     set(value) {
+                //         console.log('set', value);
+                //     }
+                // }
+                
+                // 简写（只考虑读取不考虑修改时才可简写）
+                fullName() {
+                    console.log('get被调用了')
+                    return this.firstName + '-' + this.lastName
                 }
             }
         })
