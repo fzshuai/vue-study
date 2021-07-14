@@ -11,7 +11,7 @@
     <!-- 
         计算属性：
             1.定义：要用的属性不存在，要通过自己有的属性计算得来
-            2.原理：底层借助了Object.defineproperty方法提供的戈塔特人和setter
+            2.原理：底层借助了Object.defineproperty方法提供的getter和setter
             3.get函数什么时候执行？
                 （1）第一次读取时会执行一次
                 （2）当依赖的数据发生改变时，会再次调用
